@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANEKA MINUMAN- Keranjang Belanja</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>ANEKA MINUMAN </h1>
+      <p>Nikmati berbagai varian es segar dengan harga terjangkau!</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="product-grid">
+      <!-- Produk 1 -->
+      <div class="product-item">
+        <img src="images/product1.jpg" alt="Es Teh Manis">
+        <h3>Es Teh Manis</h3>
+        <p>Es teh dengan rasa manis alami, menyegarkan di hari panas.</p>
+        <span class="price">Rp 5.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Teh Manis', 5000)">Add to Cart</button>
+      </div>
+      <!-- Produk 2 -->
+      <div class="product-item">
+        <img src="images/product2.jpg" alt="Es Jeruk Segar">
+        <h3>Es Jeruk Segar</h3>
+        <p>Minuman jeruk murni kaya vitamin C, cocok untuk melepas dahaga.</p>
+        <span class="price">Rp 7.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Jeruk Segar', 7000)">Add to Cart</button>
+      </div>
+      <!-- Produk 3 -->
+      <div class="product-item">
+        <img src="images/product3.jpg" alt="Es Campur">
+        <h3>Es Campur</h3>
+        <p>Campuran buah segar dengan sirup manis, pilihan tepat untuk cuaca panas.</p>
+        <span class="price">Rp 10.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Campur', 10000)">Add to Cart</button>
+      </div>
+      <!-- Produk 4 -->
+      <div class="product-item">
+        <img src="images/product4.jpg" alt="Es Cendol">
+        <h3>Es Cendol</h3>
+        <p>Cendol kenyal dengan santan kental dan gula aren, cita rasa khas nusantara.</p>
+        <span class="price">Rp 8.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Cendol', 8000)">Add to Cart</button>
+      </div>
+      <!-- Produk 5 -->
+      <div class="product-item">
+        <img src="images/product5.jpg" alt="Es Kelapa Muda">
+        <h3>Es Kelapa Muda</h3>
+        <p>Daging kelapa muda dengan air kelapa segar, menyegarkan dan sehat.</p>
+        <span class="price">Rp 12.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Kelapa Muda', 12000)">Add to Cart</button>
+      </div>
+      <!-- Produk 6 -->
+      <div class="product-item">
+        <img src="images/product6.jpg" alt="Es Kopyor">
+        <h3>Es Kopyor</h3>
+        <p>Es dengan kelapa kopyor unik, memberikan sensasi rasa yang berbeda.</p>
+        <span class="price">Rp 13.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Kopyor', 13000)">Add to Cart</button>
+      </div>
+      <!-- Produk 7 -->
+      <div class="product-item">
+        <img src="images/product7.jpg" alt="Es Doger">
+        <h3>Es Doger</h3>
+        <p>Campuran tape, buah, dan santan dengan sirup gula merah yang nikmat.</p>
+        <span class="price">Rp 11.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Doger', 11000)">Add to Cart</button>
+      </div>
+      <!-- Produk 8 -->
+      <div class="product-item">
+        <img src="images/product8.jpg" alt="Es Krim">
+        <h3>Es Krim</h3>
+        <p>Es krim lembut dengan berbagai varian rasa favorit, cocok untuk semua usia.</p>
+        <span class="price">Rp 15.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Krim', 15000)">Add to Cart</button>
+      </div>
+      <!-- Produk 9 -->
+      <div class="product-item">
+        <img src="images/product9.jpg" alt="Es Teler">
+        <h3>Es Teler</h3>
+        <p>Perpaduan alpukat, nangka, dan kelapa dengan es serut, sangat menyegarkan.</p>
+        <span class="price">Rp 14.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Teler', 14000)">Add to Cart</button>
+      </div>
+      <!-- Produk 10 -->
+      <div class="product-item">
+        <img src="images/product10.jpg" alt="Es Soda Susu">
+        <h3>Es Soda Susu</h3>
+        <p>Minuman unik dengan kombinasi susu dan soda, memberikan sensasi segar yang berbeda.</p>
+        <span class="price">Rp 9.000</span>
+        <button class="add-cart-btn" onclick="addToCart('Es Soda Susu', 9000)">Add to Cart</button>
+      </div>
+    </div>
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar">
+      <h2>Keranjang Belanja</h2>
+      <div class="cart-items" id="cartItems">
+        <!-- Daftar item akan muncul di sini -->
+      </div>
+      <p>Total: <span id="cartTotal">Rp 0</span></p>
+      <button class="checkout-btn" onclick="openCheckout()">Checkout</button>
+    </aside>
+  </main>
+
+  <!-- Modal Checkout -->
+  <div id="checkoutModal" class="modal">
+    <div class="modal-content">
+      <h2>Form Pemesanan & Pembayaran</h2>
+      <form id="checkoutForm" onsubmit="submitOrder(event)">
+        <label for="nama">Nama Lengkap:</label>
+        <input type="text" id="nama" name="nama" required>
+        <label for="alamat">Alamat:</label>
+        <textarea id="alamat" name="alamat" rows="3" required></textarea>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="no_hp">Nomor HP:</label>
+        <input type="text" id="no_hp" name="no_hp" required>
+        <h3>Informasi Pembayaran</h3>
+        <label for="cc_number">Nomor Kartu Kredit:</label>
+        <input type="text" id="cc_number" name="cc_number" required>
+        <label for="expiry">Masa Berlaku (MM/YY):</label>
+        <input type="text" id="expiry" name="expiry" required>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required>
+        <button type="submit">Submit Order</button>
+        <button type="button" class="close-btn" onclick="closeCheckout()">Batal</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Jualan Es. Semua hak dilindungi.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Array untuk menyimpan item di keranjang
+    let cart = [];
+
+    // Fungsi untuk menambahkan item ke keranjang
+    function addToCart(productName, price) {
+      const product = { name: productName, price: price };
+      cart.push(product);
+      updateCart();
+    }
+
+    // Fungsi untuk memperbarui tampilan keranjang
+    function updateCart() {
+      const cartItemsDiv = document.getElementById('cartItems');
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        cartItemsDiv.innerHTML += `
+          <div class="cart-item">
+            <span>${item.name} - Rp ${item.price}</span>
+            <button onclick="removeItem(${index})">x</button>
+          </div>
+        `;
+      });
+      document.getElementById('cartTotal').innerText = `Rp ${total}`;
+    }
+
+    // Fungsi untuk menghapus item dari keranjang
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    // Fungsi untuk membuka modal checkout
+    function openCheckout() {
+      if (cart.length === 0) {
+        alert('Keranjang belanja kosong!');
+        return;
+      }
+      document.getElementById('checkoutModal').style.display = 'block';
+    }
+
+    // Fungsi untuk menutup modal checkout
+    function closeCheckout() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+
+    // Fungsi untuk mensimulasikan proses pengiriman pesanan
+    function submitOrder(event) {
+      event.preventDefault();
+      // Simulasi proses pembayaran dan pengiriman pesanan
+      alert('Pesanan berhasil dikirim! Terima kasih atas pembelian Anda.');
+      cart = [];
+      updateCart();
+      document.getElementById('checkoutForm').reset();
+      closeCheckout();
+    }
+  </script>
+</body>
+</html>
